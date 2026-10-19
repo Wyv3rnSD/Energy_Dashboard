@@ -1,0 +1,225 @@
+area,iso_code,continent,area_type,ember_region,country_id
+ASEAN,,,Region,,1
+AU,,,Region,,2
+Afghanistan,AFG,Asia,Country or economy,Asia,3
+Africa,,,Region,,4
+Albania,ALB,Europe,Country or economy,Europe,5
+Algeria,DZA,Africa,Country or economy,Africa,6
+American Samoa,ASM,Oceania,Country or economy,Oceania,7
+Angola,AGO,Africa,Country or economy,Africa,8
+Antigua and Barbuda,ATG,North America,Country or economy,Latin America and Caribbean,9
+Argentina,ARG,South America,Country or economy,Latin America and Caribbean,10
+Armenia,ARM,Asia,Country or economy,Asia,11
+Aruba,ABW,South America,Country or economy,Latin America and Caribbean,12
+Asia,,,Region,,13
+Australia,AUS,Oceania,Country or economy,Oceania,14
+Austria,AUT,Europe,Country or economy,Europe,15
+Azerbaijan,AZE,Asia,Country or economy,Asia,16
+Bahamas,BHS,North America,Country or economy,Latin America and Caribbean,17
+Bahrain,BHR,Asia,Country or economy,Middle East,18
+Bangladesh,BGD,Asia,Country or economy,Asia,19
+Barbados,BRB,North America,Country or economy,Latin America and Caribbean,20
+Belarus,BLR,Europe,Country or economy,Europe,21
+Belgium,BEL,Europe,Country or economy,Europe,22
+Belize,BLZ,North America,Country or economy,Latin America and Caribbean,23
+Benin,BEN,Africa,Country or economy,Africa,24
+Bhutan,BTN,Asia,Country or economy,Asia,25
+Bolivia,BOL,South America,Country or economy,Latin America and Caribbean,26
+Bosnia Herzegovina,BIH,Europe,Country or economy,Europe,27
+Botswana,BWA,Africa,Country or economy,Africa,28
+Brazil,BRA,South America,Country or economy,Latin America and Caribbean,29
+Brunei Darussalam,BRN,Asia,Country or economy,Asia,30
+Bulgaria,BGR,Europe,Country or economy,Europe,31
+Burkina Faso,BFA,Africa,Country or economy,Africa,32
+Burundi,BDI,Africa,Country or economy,Africa,33
+Cabo Verde,CPV,Africa,Country or economy,Africa,34
+Cambodia,KHM,Asia,Country or economy,Asia,35
+Cameroon,CMR,Africa,Country or economy,Africa,36
+Canada,CAN,North America,Country or economy,North America,37
+Cayman Islands,CYM,North America,Country or economy,Latin America and Caribbean,38
+Central African Republic,CAF,Africa,Country or economy,Africa,39
+Chad,TCD,Africa,Country or economy,Africa,40
+Chile,CHL,South America,Country or economy,Latin America and Caribbean,41
+China,CHN,Asia,Country or economy,Asia,42
+Colombia,COL,South America,Country or economy,Latin America and Caribbean,43
+Comoros,COM,Africa,Country or economy,Africa,44
+Congo,COG,Africa,Country or economy,Africa,45
+Congo (DRC),COD,Africa,Country or economy,Africa,46
+Cook Islands (the),COK,Oceania,Country or economy,Oceania,47
+Costa Rica,CRI,North America,Country or economy,Latin America and Caribbean,48
+Cote d'Ivoire,CIV,Africa,Country or economy,Africa,49
+Croatia,HRV,Europe,Country or economy,Europe,50
+Cuba,CUB,North America,Country or economy,Latin America and Caribbean,51
+Cyprus,CYP,Europe,Country or economy,Europe,52
+Czechia,CZE,Europe,Country or economy,Europe,53
+Denmark,DNK,Europe,Country or economy,Europe,54
+Djibouti,DJI,Africa,Country or economy,Africa,55
+Dominica,DMA,North America,Country or economy,Latin America and Caribbean,56
+Dominican Republic,DOM,North America,Country or economy,Latin America and Caribbean,57
+EU,,,Region,,58
+Ecuador,ECU,South America,Country or economy,Latin America and Caribbean,59
+Egypt,EGY,Africa,Country or economy,Africa,60
+El Salvador,SLV,North America,Country or economy,Latin America and Caribbean,61
+Equatorial Guinea,GNQ,Africa,Country or economy,Africa,62
+Eritrea,ERI,Africa,Country or economy,Africa,63
+Estonia,EST,Europe,Country or economy,Europe,64
+Eswatini,SWZ,Africa,Country or economy,Africa,65
+Ethiopia,ETH,Africa,Country or economy,Africa,66
+Europe,,,Region,,67
+Falkland Islands (Malvinas),FLK,South America,Country or economy,Latin America and Caribbean,68
+Faroe Islands,FRO,Europe,Country or economy,Europe,69
+Fiji,FJI,Oceania,Country or economy,Oceania,70
+Finland,FIN,Europe,Country or economy,Europe,71
+France,FRA,Europe,Country or economy,Europe,72
+French Guiana,GUF,South America,Country or economy,Latin America and Caribbean,73
+French Polynesia,PYF,Oceania,Country or economy,Oceania,74
+G20,,,Region,,75
+G7,,,Region,,76
+Gabon,GAB,Africa,Country or economy,Africa,77
+Gambia,GMB,Africa,Country or economy,Africa,78
+Georgia,GEO,Asia,Country or economy,Asia,79
+Germany,DEU,Europe,Country or economy,Europe,80
+Ghana,GHA,Africa,Country or economy,Africa,81
+Greece,GRC,Europe,Country or economy,Europe,82
+Greenland,GRL,North America,Country or economy,North America,83
+Grenada,GRD,North America,Country or economy,Latin America and Caribbean,84
+Guadeloupe,GLP,North America,Country or economy,Latin America and Caribbean,85
+Guam,GUM,Oceania,Country or economy,Oceania,86
+Guatemala,GTM,North America,Country or economy,Latin America and Caribbean,87
+Guinea,GIN,Africa,Country or economy,Africa,88
+Guinea-Bissau,GNB,Africa,Country or economy,Africa,89
+Guyana,GUY,South America,Country or economy,Latin America and Caribbean,90
+Haiti,HTI,North America,Country or economy,Latin America and Caribbean,91
+Honduras,HND,North America,Country or economy,Latin America and Caribbean,92
+Hong Kong (SAR of China),HKG,Asia,Country or economy,Asia,93
+Hungary,HUN,Europe,Country or economy,Europe,94
+Iceland,ISL,Europe,Country or economy,Europe,95
+India,IND,Asia,Country or economy,Asia,96
+Indonesia,IDN,Asia,Country or economy,Asia,97
+Iran,IRN,Asia,Country or economy,Middle East,98
+Iraq,IRQ,Asia,Country or economy,Middle East,99
+Ireland,IRL,Europe,Country or economy,Europe,100
+Israel,ISR,Asia,Country or economy,Middle East,101
+Italy,ITA,Europe,Country or economy,Europe,102
+Jamaica,JAM,North America,Country or economy,Latin America and Caribbean,103
+Japan,JPN,Asia,Country or economy,Asia,104
+Jordan,JOR,Asia,Country or economy,Middle East,105
+Kazakhstan,KAZ,Asia,Country or economy,Asia,106
+Kenya,KEN,Africa,Country or economy,Africa,107
+Kiribati,KIR,Oceania,Country or economy,Oceania,108
+Kosovo,XKX,Europe,Country or economy,Europe,109
+Kuwait,KWT,Asia,Country or economy,Middle East,110
+Kyrgyzstan,KGZ,Asia,Country or economy,Asia,111
+Lao PDR,LAO,Asia,Country or economy,Asia,112
+Latin America and Caribbean,,,Region,,113
+Latvia,LVA,Europe,Country or economy,Europe,114
+Lebanon,LBN,Asia,Country or economy,Middle East,115
+Lesotho,LSO,Africa,Country or economy,Africa,116
+Liberia,LBR,Africa,Country or economy,Africa,117
+Libya,LBY,Africa,Country or economy,Africa,118
+Lithuania,LTU,Europe,Country or economy,Europe,119
+Luxembourg,LUX,Europe,Country or economy,Europe,120
+MENA,,,Region,,121
+Macao (SAR of China),MAC,Asia,Country or economy,Asia,122
+Madagascar,MDG,Africa,Country or economy,Africa,123
+Malawi,MWI,Africa,Country or economy,Africa,124
+Malaysia,MYS,Asia,Country or economy,Asia,125
+Maldives,MDV,Asia,Country or economy,Asia,126
+Mali,MLI,Africa,Country or economy,Africa,127
+Malta,MLT,Europe,Country or economy,Europe,128
+Martinique,MTQ,North America,Country or economy,Latin America and Caribbean,129
+Mauritania,MRT,Africa,Country or economy,Africa,130
+Mauritius,MUS,Africa,Country or economy,Africa,131
+Mexico,MEX,North America,Country or economy,Latin America and Caribbean,132
+Middle East,,,Region,,133
+Moldova,MDA,Europe,Country or economy,Europe,134
+Mongolia,MNG,Asia,Country or economy,Asia,135
+Montenegro,MNE,Europe,Country or economy,Europe,136
+Montserrat,MSR,North America,Country or economy,Latin America and Caribbean,137
+Morocco,MAR,Africa,Country or economy,Africa,138
+Mozambique,MOZ,Africa,Country or economy,Africa,139
+Myanmar,MMR,Asia,Country or economy,Asia,140
+Namibia,NAM,Africa,Country or economy,Africa,141
+Nauru,NRU,Oceania,Country or economy,Oceania,142
+Nepal,NPL,Asia,Country or economy,Asia,143
+Netherlands,NLD,Europe,Country or economy,Europe,144
+New Caledonia,NCL,Oceania,Country or economy,Oceania,145
+New Zealand,NZL,Oceania,Country or economy,Oceania,146
+Nicaragua,NIC,North America,Country or economy,Latin America and Caribbean,147
+Niger,NER,Africa,Country or economy,Africa,148
+Nigeria,NGA,Africa,Country or economy,Africa,149
+North America,,,Region,,150
+North Korea,PRK,Asia,Country or economy,Asia,151
+North Macedonia,MKD,Europe,Country or economy,Europe,152
+Norway,NOR,Europe,Country or economy,Europe,153
+OECD,,,Region,,154
+Oceania,,,Region,,155
+Oman,OMN,Asia,Country or economy,Middle East,156
+Pakistan,PAK,Asia,Country or economy,Asia,157
+Palestine (State of),PSE,Asia,Country or economy,Middle East,158
+Panama,PAN,North America,Country or economy,Latin America and Caribbean,159
+Papua New Guinea,PNG,Oceania,Country or economy,Oceania,160
+Paraguay,PRY,South America,Country or economy,Latin America and Caribbean,161
+Peru,PER,South America,Country or economy,Latin America and Caribbean,162
+Poland,POL,Europe,Country or economy,Europe,163
+Portugal,PRT,Europe,Country or economy,Europe,164
+Puerto Rico,PRI,North America,Country or economy,Latin America and Caribbean,165
+Qatar,QAT,Asia,Country or economy,Middle East,166
+Reunion,REU,Africa,Country or economy,Africa,167
+Romania,ROU,Europe,Country or economy,Europe,168
+Russia,RUS,Europe,Country or economy,Europe,169
+Rwanda,RWA,Africa,Country or economy,Africa,170
+Saint Kitts and Nevis,KNA,North America,Country or economy,Latin America and Caribbean,171
+Saint Lucia,LCA,North America,Country or economy,Latin America and Caribbean,172
+Saint Pierre and Miquelon,SPM,North America,Country or economy,Latin America and Caribbean,173
+Saint Vincent and the Grenadines,VCT,North America,Country or economy,Latin America and Caribbean,174
+Samoa,WSM,Oceania,Country or economy,Oceania,175
+Sao Tome and Principe,STP,Africa,Country or economy,Africa,176
+Saudi Arabia,SAU,Asia,Country or economy,Middle East,177
+Senegal,SEN,Africa,Country or economy,Africa,178
+Serbia,SRB,Europe,Country or economy,Europe,179
+Seychelles,SYC,Africa,Country or economy,Africa,180
+Sierra Leone,SLE,Africa,Country or economy,Africa,181
+Singapore,SGP,Asia,Country or economy,Asia,182
+Slovakia,SVK,Europe,Country or economy,Europe,183
+Slovenia,SVN,Europe,Country or economy,Europe,184
+Solomon Islands,SLB,Oceania,Country or economy,Oceania,185
+Somalia,SOM,Africa,Country or economy,Africa,186
+South Africa,ZAF,Africa,Country or economy,Africa,187
+South Korea,KOR,Asia,Country or economy,Asia,188
+South Sudan,SSD,Africa,Country or economy,Africa,189
+Spain,ESP,Europe,Country or economy,Europe,190
+Sri Lanka,LKA,Asia,Country or economy,Asia,191
+Sudan,SDN,Africa,Country or economy,Africa,192
+Suriname,SUR,South America,Country or economy,Latin America and Caribbean,193
+Sweden,SWE,Europe,Country or economy,Europe,194
+Switzerland,CHE,Europe,Country or economy,Europe,195
+Syria,SYR,Asia,Country or economy,Middle East,196
+Taiwan (China),TWN,Asia,Country or economy,Asia,197
+Tajikistan,TJK,Asia,Country or economy,Asia,198
+Tanzania (the United Republic of),TZA,Africa,Country or economy,Africa,199
+Thailand,THA,Asia,Country or economy,Asia,200
+The Philippines,PHL,Asia,Country or economy,Asia,201
+Togo,TGO,Africa,Country or economy,Africa,202
+Tonga,TON,Oceania,Country or economy,Oceania,203
+Trinidad and Tobago,TTO,North America,Country or economy,Latin America and Caribbean,204
+Tunisia,TUN,Africa,Country or economy,Africa,205
+Turkmenistan,TKM,Asia,Country or economy,Asia,206
+Turks and Caicos Islands,TCA,North America,Country or economy,Latin America and Caribbean,207
+Türkiye,TUR,Asia,Country or economy,Europe,208
+Uganda,UGA,Africa,Country or economy,Africa,209
+Ukraine,UKR,Europe,Country or economy,Europe,210
+United Arab Emirates,ARE,Asia,Country or economy,Middle East,211
+United Kingdom,GBR,Europe,Country or economy,Europe,212
+United States,USA,North America,Country or economy,North America,213
+Uruguay,URY,South America,Country or economy,Latin America and Caribbean,214
+Uzbekistan,UZB,Asia,Country or economy,Asia,215
+Vanuatu,VUT,Oceania,Country or economy,Oceania,216
+Venezuela,VEN,South America,Country or economy,Latin America and Caribbean,217
+Viet Nam,VNM,Asia,Country or economy,Asia,218
+Virgin Islands (British),VGB,North America,Country or economy,Latin America and Caribbean,219
+Virgin Islands (U.S.),VIR,North America,Country or economy,Latin America and Caribbean,220
+World,,,Region,,221
+Yemen,YEM,Asia,Country or economy,Middle East,222
+Zambia,ZMB,Africa,Country or economy,Africa,223
+Zimbabwe,ZWE,Africa,Country or economy,Africa,224

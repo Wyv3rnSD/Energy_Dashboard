@@ -1,0 +1,19 @@
+# Secrets: copy .env.example to .env locally, never commit it
+.env
+
+# Earlier sample work, kept out of the repo
+amey_ver/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

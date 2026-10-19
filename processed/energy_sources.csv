@@ -1,0 +1,18 @@
+electricity_source,energy_category,is_renewable,is_fossil,is_low_carbon,is_aggregated_source,source_id
+Bioenergy,Renewable,True,False,True,False,1
+Clean,Other,False,False,False,True,2
+Coal,Fossil,False,True,False,False,3
+Demand,Other,False,False,False,True,4
+Fossil,Other,False,False,False,True,5
+Gas,Fossil,False,True,False,False,6
+Hydro,Renewable,True,False,True,False,7
+"Hydro, bioenergy and other renewables",Other,False,False,False,True,8
+Net imports,Other,False,False,False,False,9
+Nuclear,Nuclear,False,False,True,False,10
+Other fossil,Fossil,False,True,False,False,11
+Other renewables,Renewable,True,False,True,False,12
+Renewables,Other,False,False,False,True,13
+Solar,Renewable,True,False,True,False,14
+Total generation,Other,False,False,False,True,15
+Wind,Renewable,True,False,True,False,16
+Wind and solar,Other,False,False,False,True,17
