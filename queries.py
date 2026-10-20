@@ -373,3 +373,24 @@ def save_forecast_run(model: str, target: str, country_id: int, metrics: dict,
 def latest_forecast(country_id: int, target: str = "renewable_generation_twh") -> dict | None:
     return get_mongo()["forecast_runs"].find_one(
         {"country_id": int(country_id), "target": target}, sort=[("created_at", -1)])
+
+
+def forecasts_for_country(country_id: int, target: str = "renewable_generation_twh"
+                          ) -> list[dict]:
+    """Every model's latest forecast for one country (actual vs predicted chart),
+    best backtest error first."""
+    return list(get_mongo()["forecast_runs"].find(
+        {"country_id": int(country_id), "target": target},
+        {"_id": 0}).sort("metrics.mae", 1))
+
+
+def forecast_model_summary(target: str = "renewable_generation_twh") -> list[dict]:
+    """Aggregation pipeline: average backtest error per model across countries."""
+    pipeline = [
+        {"$match": {"target": target}},
+        {"$group": {"_id": "$model", "countries": {"$sum": 1},
+                    "avg_mae": {"$avg": "$metrics.mae"},
+                    "avg_mape": {"$avg": "$metrics.mape"}}},
+        {"$sort": {"avg_mape": 1}},
+    ]
+    return list(get_mongo()["forecast_runs"].aggregate(pipeline))

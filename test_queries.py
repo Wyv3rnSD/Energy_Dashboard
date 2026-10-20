@@ -85,6 +85,22 @@ def test_mongo():
     q.get_mongo()["forecast_runs"].delete_many({"model": "test"})
 
 
+def test_forecasts():
+    """Needs `python forecasting.py` to have run; skipped otherwise."""
+    if not q.get_mongo()["forecast_runs"].count_documents({"model": "ridge_lags"}):
+        print("  (skipped: run forecasting.py first)")
+        return
+    de = _country("Germany")
+    runs = q.forecasts_for_country(de)
+    assert {r["model"] for r in runs} == {"naive", "linear_trend", "ridge_lags"}
+    assert [r["metrics"]["mae"] for r in runs] == sorted(r["metrics"]["mae"] for r in runs)
+    kinds = {p["kind"] for p in runs[0]["predictions"]}
+    assert kinds == {"backtest", "forecast"}
+    assert all(p["value"] >= 0 for r in runs for p in r["predictions"])
+    summary = q.forecast_model_summary()
+    assert {s["_id"] for s in summary} == {"naive", "linear_trend", "ridge_lags"}
+
+
 if __name__ == "__main__":
     import sys
     failed = 0
