@@ -12,7 +12,8 @@ Interactive dashboard on the [Ember](https://ember-energy.org/) global electrici
 | `build_databases.py` | Builds the MySQL and MongoDB databases from `processed/` |
 | `forecasting.py` | Backtests three models and saves 2026–2030 forecasts to MongoDB |
 | `queries.py` | Query layer: every SQL and MongoDB read/write the dashboard uses |
-| `test_queries.py` | Checks the queries against the built databases |
+| `api.py` | FastAPI JSON API over `queries.py` for the frontend |
+| `test_queries.py`, `test_api.py` | Check the queries and API against the built databases |
 | `INGESTION_PLAN.md` | Schema design and CSV-to-table mapping |
 
 ## Database design
@@ -46,7 +47,11 @@ cp .env.example .env        # then fill in your MySQL password / MongoDB URI
 python build_databases.py   # build both databases (--mysql-only / --mongo-only)
 python forecasting.py       # backtest models, save forecasts (--target total_generation_twh)
 python test_queries.py      # verify the queries
+python test_api.py          # verify the API
+uvicorn api:app --reload    # start the API on http://localhost:8000
 ```
+
+Interactive API docs (every endpoint, try-it-out buttons) are at http://localhost:8000/docs while the API runs.
 
 Re-running `build_databases.py` is safe: it rebuilds the tables and `country_profiles` from scratch and leaves saved analyses and forecast runs untouched.
 
@@ -58,5 +63,5 @@ To regenerate `processed/` from the raw CSV, run `preprocessing.ipynb` top to bo
 - [x] MySQL + MongoDB build
 - [x] Query layer with advanced SQL (window functions, CTEs, ROLLUP, stored procedures)
 - [x] Forecasting (naive baseline vs linear trend vs pooled Ridge on lagged log values)
-- [ ] API layer for the frontend
+- [x] API layer for the frontend (FastAPI)
 - [ ] Dashboard frontend
