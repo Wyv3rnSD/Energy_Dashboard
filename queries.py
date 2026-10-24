@@ -123,6 +123,17 @@ def year_range() -> tuple[int, int]:
     return int(row.lo), int(row.hi)
 
 
+def latest_complete_year(min_coverage: float = 0.8) -> int:
+    """Latest year in which at least min_coverage of countries have data. The newest
+    year is often only partly reported, so rankings default to this one instead."""
+    return int(run_sql("""
+        SELECT MAX(year) AS y FROM (
+            SELECT year, COUNT(*) AS n FROM energy_summary GROUP BY year
+        ) per_year
+        WHERE n >= :share * (SELECT COUNT(DISTINCT country_id) FROM energy_summary)""",
+        share=min_coverage)["y"].iloc[0])
+
+
 # --------------------------------------------------------------------------
 # Time series and comparisons
 # --------------------------------------------------------------------------
@@ -301,6 +312,39 @@ def top_renewable(year: int, n: int = 10, min_total_twh: float = 1.0) -> pd.Data
     return call_procedure("get_top_renewable", year, n, min_total_twh)
 
 
+def data_rows(country_ids: list[int] | None = None, sources: list[str] | None = None,
+              year_from: int = 1985, year_to: int = 2100, include_aggregates: bool = False,
+              limit: int = 100, offset: int = 0) -> tuple[pd.DataFrame, int]:
+    """Filtered, paginated source-level rows for the data explorer table.
+    Returns (one page of rows, total number of matching rows)."""
+    where = ["e.year BETWEEN :y0 AND :y1"]
+    params = {"y0": year_from, "y1": year_to}
+    if country_ids:
+        ids = {f"c{i}": cid for i, cid in enumerate(country_ids)}
+        where.append(f"e.country_id IN ({', '.join(':' + k for k in ids)})")
+        params.update(ids)
+    if sources:
+        names = {f"s{i}": name for i, name in enumerate(sources)}
+        where.append(f"s.electricity_source IN ({', '.join(':' + k for k in names)})")
+        params.update(names)
+    if not include_aggregates:
+        where.append("s.is_aggregated_source = FALSE")
+    body = f"""
+        FROM energy_data e
+        JOIN countries c ON c.country_id = e.country_id
+        JOIN energy_sources s ON s.source_id = e.source_id
+        WHERE {' AND '.join(where)}"""
+    total = int(run_sql("SELECT COUNT(*) AS n" + body, **params)["n"].iloc[0])
+    page = run_sql(f"""
+        SELECT c.area, c.continent, s.electricity_source, s.energy_category, e.year,
+               e.generation_twh, e.generation_share_percent, e.capacity_gw,
+               e.emissions_mtco2e, e.emissions_intensity_gco2e_kwh
+        {body}
+        ORDER BY c.area, e.year DESC, s.electricity_source
+        LIMIT :limit OFFSET :offset""", limit=limit, offset=offset, **params)
+    return page, total
+
+
 def ml_training_data(country_id: int | None = None) -> pd.DataFrame:
     """Features for forecasting: lag/growth features joined to the yearly summary."""
     sql = """
@@ -385,12 +429,17 @@ def forecasts_for_country(country_id: int, target: str = "renewable_generation_t
 
 
 def forecast_model_summary(target: str = "renewable_generation_twh") -> list[dict]:
-    """Aggregation pipeline: average backtest error per model across countries."""
+    """Aggregation pipeline: backtest error per model across countries. Medians
+    ($median needs MongoDB 7.0+) are the fair comparison, since a few tiny grids
+    have huge percentage errors that drag the averages around."""
+    median = lambda field: {"$median": {"input": field, "method": "approximate"}}
     pipeline = [
         {"$match": {"target": target}},
         {"$group": {"_id": "$model", "countries": {"$sum": 1},
                     "avg_mae": {"$avg": "$metrics.mae"},
-                    "avg_mape": {"$avg": "$metrics.mape"}}},
-        {"$sort": {"avg_mape": 1}},
+                    "avg_mape": {"$avg": "$metrics.mape"},
+                    "median_mae": median("$metrics.mae"),
+                    "median_mape": median("$metrics.mape")}},
+        {"$sort": {"median_mae": 1}},
     ]
     return list(get_mongo()["forecast_runs"].aggregate(pipeline))

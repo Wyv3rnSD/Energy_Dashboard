@@ -56,6 +56,20 @@ def test_compare_and_rankings():
     assert get("/api/quality/renewable-share?year=2024")
 
 
+def test_data_explorer():
+    de = germany_id()
+    meta = get("/api/meta")
+    assert meta["year_min"] < meta["default_year"] <= meta["year_max"]
+    page = get(f"/api/data?country_ids={de}&year_from=2020&year_to=2024&limit=10")
+    assert page["total"] > 10 and len(page["rows"]) == 10
+    assert {r["area"] for r in page["rows"]} == {"Germany"}
+    assert all(r["electricity_source"] != "Total generation" for r in page["rows"])
+    second = get(f"/api/data?country_ids={de}&year_from=2020&year_to=2024&limit=10&offset=10")
+    assert second["rows"][0] != page["rows"][0]
+    solar = get(f"/api/data?country_ids={de}&sources=Solar&sources=Wind")
+    assert {r["electricity_source"] for r in solar["rows"]} == {"Solar", "Wind"}
+
+
 def test_bad_input_is_a_400():
     get("/api/rankings/top?year=2024&metric=drop_table", status=400)
     get("/api/countries?membership=NATO", status=400)

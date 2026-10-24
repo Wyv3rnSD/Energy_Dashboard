@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/* Dark theme with a deep violet accent. Every colour is a token here so the
+   whole look can be retuned in one place. */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: #0b0a12;
+  --color-panel: #13111c;          /* card / chart surface */
+  --color-panel-2: #1a1726;        /* raised: inputs, hover rows */
+  --color-border: #2a2540;
+  --color-border-strong: #3a3357;
+  --color-fg: #f0eef6;             /* primary text */
+  --color-muted: #a39fb5;          /* secondary text */
+  --color-subtle: #77728a;         /* tertiary text, axis labels */
+
+  --color-primary: #7c5cff;
+  --color-primary-hover: #8f74ff;
+  --color-primary-fg: #ffffff;
+  --color-primary-soft: rgb(124 92 255 / 0.14);
+
+  --color-good: #0ca30c;
+  --color-critical: #d03b3b;
+
+  --radius-panel: 1.25rem;
+  --radius-control: 0.75rem;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; color-scheme: dark; }
+  body {
+    @apply bg-background text-fg font-sans antialiased;
+  }
+  /* Sections stop below the sticky navbar when jumped to. */
+  section[id] { scroll-margin-top: 5.5rem; }
+  ::selection { background: rgb(124 92 255 / 0.35); }
+}
+
+/* Recharts: keep focus outlines off SVG wrappers, keep text in theme ink. */
+.recharts-wrapper *:focus { outline: none; }
+.recharts-cartesian-axis-tick-value { fill: var(--color-subtle); font-size: 12px; }

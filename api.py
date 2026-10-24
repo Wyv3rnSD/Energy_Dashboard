@@ -1,8 +1,12 @@
 """JSON API over queries.py for the dashboard frontend (React, Next.js, ...).
 
 Run:
-    uvicorn api:app --reload            # http://localhost:8000
+    python -m uvicorn api:app --reload  # http://localhost:8000
     open http://localhost:8000/docs     # interactive docs for every endpoint
+
+Once the frontend is built (cd frontend && npm run build), this server also
+serves the dashboard itself at http://localhost:8000, so one process runs
+everything; start_dashboard.bat does both steps.
 
 All endpoints live under /api and return JSON. Tables come back as a list of
 row objects, e.g. [{"area": "Germany", "year": 2024, "value": 58.3}, ...].
@@ -12,6 +16,7 @@ The browser origins allowed to call the API are set with CORS_ORIGINS in .env
 
 import math
 import os
+from pathlib import Path
 from datetime import date, datetime
 
 import pandas as pd
@@ -19,6 +24,7 @@ from bson import ObjectId
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 import queries as q
@@ -88,6 +94,7 @@ def meta():
     return {
         "year_min": first,
         "year_max": last,
+        "default_year": q.latest_complete_year(),
         "continents": q.list_continents(),
         "memberships": sorted(q.MEMBERSHIPS),
         "data_metrics": sorted(q.DATA_METRICS),
@@ -183,6 +190,16 @@ def scatter_emissions(year: int, min_total_twh: float = 1.0):
     return rows(q.emissions_vs_renewables(year, min_total_twh))
 
 
+@app.get("/api/data", tags=["data explorer"])
+def data(country_ids: list[int] | None = Query(None), sources: list[str] | None = Query(None),
+         year_from: int = 1985, year_to: int = 2100, include_aggregates: bool = False,
+         limit: int = Query(100, ge=1, le=5000), offset: int = Query(0, ge=0)):
+    """Filtered source-level rows, one page at a time: {"total": n, "rows": [...]}."""
+    page, total = q.data_rows(country_ids, sources, year_from, year_to,
+                              include_aggregates, limit, offset)
+    return {"total": total, "rows": rows(page)}
+
+
 @app.get("/api/quality/renewable-share", tags=["meta"])
 def quality_renewable_share(year: int):
     """Renewable share recomputed with a CTE vs the stored value."""
@@ -203,7 +220,7 @@ def forecasts(country_id: int, target: str = Target):
     """Every model's backtest and 2026+ forecast for one country, best model first."""
     runs = q.forecasts_for_country(country_id, target)
     if not runs:
-        raise HTTPException(404, "No forecasts yet; run forecasting.py")
+        raise HTTPException(404, f"No forecasts for this target yet. Run: python forecasting.py --target {target}")
     return clean(runs)
 
 
@@ -231,3 +248,13 @@ def analyses_create(analysis: AnalysisIn):
 def analyses_delete(analysis_id: str):
     if not ObjectId.is_valid(analysis_id) or not q.delete_analysis(analysis_id):
         raise HTTPException(404, "Analysis not found")
+
+
+# --------------------------------------------------------------------------
+# Dashboard: serve the built React app (frontend/dist) at /. Mounted last so
+# the /api routes and /docs above take priority.
+# --------------------------------------------------------------------------
+
+DIST = Path(__file__).parent / "frontend" / "dist"
+if DIST.is_dir():
+    app.mount("/", StaticFiles(directory=DIST, html=True), name="dashboard")
